@@ -1,14 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Game Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework Help Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #555;
+        }
+        nav a {
+            color: white;
+            padding: 1em 2em;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #777;
+        }
+        section {
+            padding: 2em;
+            text-align: center;
+        }
+        button {
+            margin-top: 1em;
+            padding: 0.7em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <h1>Welcome!</h1>
-  <p>This is my GitHub Pages website.</p>
-
-  <button onclick="alert('Hello!')">
-    Click me
-  </button>
+    <header>
+        <h1>Welcome to the Homework Help Hub</h1>
+    </header>
+    <nav>
+        <a href="#homework">Homework Help</a>
+        <a href="about.html">About Us</a>
+    </nav>
+    <section id="homework">
+        <h2>Homework Help</h2>
+        <p>Find resources, guides, and tips to help you succeed in your studies.</p>
+        <button onclick="location.href='about.html'">Learn More About Us</button>
+    </section>
 </body>
 </html>
