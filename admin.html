@@ -4,44 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+
+    <link rel="icon" href="">
 </head>
 
 <body style="font-family: Arial; text-align: center; padding: 30px;">
 
     <h1>Admin Access</h1>
 
-    <p>Enter password to continue:</p>
+    <!-- 🔐 LOGIN -->
+    <div id="loginBox">
+        <p>Enter Admin Code:</p>
+        <input type="password" id="code" placeholder="1234">
+        <button onclick="login()">Login</button>
 
-    <input type="password" id="password" placeholder="Enter code">
-    <button onclick="checkPassword()">Login</button>
+        <br><br>
 
-    <br><br>
+        <a href="index.html">
+            <button>Back Home</button>
+        </a>
+    </div>
 
-    <a href="index.html">
-        <button>Back Home</button>
-    </a>
-
-    <!-- 🔒 Hidden Admin Panel -->
+    <!-- 🧠 ADMIN PANEL -->
     <div id="adminPanel" style="display:none; margin-top:30px;">
 
-        <h2>Welcome Admin</h2>
-        <p>You now have access to special tools.</p>
+        <h2>Developer Panel</h2>
 
-        <button onclick="alert('Admin tool 1 activated')">Tool 1</button>
-        <button onclick="alert('Admin tool 2 activated')">Tool 2</button>
+        <!-- 🧪 Test Mode -->
+        <button onclick="testMode()">🧪 Test Mode</button>
+
+        <br><br>
+
+        <!-- ⚡ Fast Navigation -->
+        <h3>⚡ Fast Navigation</h3>
+
+        <button onclick="go('index.html#math-help')">Math</button>
+        <button onclick="go('index.html#ela-help')">ELA</button>
+        <button onclick="go('index.html')">Home</button>
+
+        <br><br>
+
+        <a href="index.html">
+            <button>Exit Admin</button>
+        </a>
 
     </div>
 
+    <!-- ⚙️ SCRIPT -->
     <script>
-        function checkPassword() {
-            const pass = document.getElementById("password").value;
 
-            if (pass === "1234") {
+        function login() {
+            const code = document.getElementById("code").value;
+
+            if (code === "1234") {
+                document.getElementById("loginBox").style.display = "none";
                 document.getElementById("adminPanel").style.display = "block";
             } else {
-                alert("Wrong password");
+                alert("Wrong code");
             }
         }
+
+        function testMode() {
+            document.body.style.border = "5px solid red";
+            document.body.style.backgroundColor = "#111";
+            document.body.style.color = "white";
+            alert("🧪 Test Mode ON");
+        }
+
+        function go(page) {
+            window.location.href = page;
+        }
+
     </script>
 
 </body>
