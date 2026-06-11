@@ -5,154 +5,122 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Homework Help Hub</title>
 
+<link rel="icon" href="">
+
 <style>
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-family: Arial;
-    background: #f4f4f4;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-/* HEADER */
 header {
-    background:#333;
-    color:white;
-    padding:15px;
-    text-align:center;
+    background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
 }
 
-/* NAV */
 nav {
-    display:flex;
-    justify-content:center;
-    background:#555;
+    display: flex;
+    justify-content: center;
+    background-color: #555;
+    flex-wrap: wrap;
 }
 
 nav a, nav button {
-    color:white;
-    padding:15px;
-    background:none;
-    border:none;
-    cursor:pointer;
-    text-decoration:none;
+    color: white;
+    padding: 1em 2em;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 nav a:hover, nav button:hover {
-    background:#777;
+    background-color: #777;
 }
 
-/* CONTENT */
 section {
-    padding:20px;
+    padding: 2em;
+    text-align: center;
 }
 
-/* LOGIN */
-#loginScreen {
-    position:fixed;
-    inset:0;
-    background:#111;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    color:white;
+.help-section {
+    margin: 2em auto;
+    width: 80%;
+    background: white;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* POPUP */
-#popup {
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    justify-content:center;
-    align-items:center;
-    z-index:9998;
+.help-item {
+    margin-bottom: 2em;
 }
 
-#popupBox {
-    background:white;
-    padding:20px;
-    width:300px;
-    text-align:center;
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- 🔐 LOGIN (ALWAYS FIRST) -->
-<div id="loginScreen">
-    <h2>Login</h2>
-    <input id="user" placeholder="Username" style="padding:10px;margin:5px;">
-    <input id="pass" type="password" placeholder="Password" style="padding:10px;margin:5px;">
-    <button onclick="login()" style="padding:10px;">Enter</button>
-</div>
-
-<!-- 🚀 POPUP -->
-<div id="popup">
-    <div id="popupBox">
-        <h3>Version 1.0</h3>
-        <p>Welcome to Homework Help Hub</p>
-        <button onclick="closePopup()">Close</button>
-    </div>
-</div>
-
-<!-- HEADER -->
 <header>
-    <h1>Homework Help Hub</h1>
+    <h1>Welcome to the Homework Help Hub</h1>
 </header>
 
-<!-- NAV -->
 <nav>
-    <a href="#math">Math Help</a>
-    <a href="#ela">ELA Help</a>
+    <a href="#math-help">Math Help</a>
+    <a href="about.html">About Us</a>
     <a href="settings.html">Settings</a>
 
+    <!-- 🔴 Panic Button -->
     <button onclick="window.location.href='https://classroom.google.com'" style="background:red;">
         Panic
     </button>
 </nav>
 
-<!-- CONTENT -->
-<section id="math">
-    <h2>Math Help</h2>
-    <p>Algebra, Geometry, Calculus</p>
+<section class="help-section" id="math-help">
+    <h2>Math Help Resources</h2>
+
+    <div class="help-item">
+        <h3>Algebra Basics</h3>
+        <a href="https://www.khanacademy.org/math/algebra" target="_blank">Algebra Lessons</a>
+    </div>
+
+    <div class="help-item">
+        <h3>Geometry Fundamentals</h3>
+        <a href="https://www.khanacademy.org/math/geometry" target="_blank">Geometry Lessons</a>
+    </div>
+
+    <div class="help-item">
+        <h3>Calculus Introduction</h3>
+        <a href="https://www.khanacademy.org/math/calculus-1" target="_blank">Calculus Lessons</a>
+    </div>
 </section>
 
-<section id="ela">
-    <h2>ELA Help</h2>
-    <p>Grammar and Writing</p>
+<section class="help-section" id="ela-help">
+    <h2>ELA Help Resources</h2>
+
+    <div class="help-item">
+        <h3>Grammar Basics</h3>
+        <a href="https://www.khanacademy.org/humanities/grammar" target="_blank">Grammar Lessons</a>
+    </div>
+
+    <div class="help-item">
+        <h3>Essay Writing Tips</h3>
+        <a href="https://writingcenter.unc.edu/tips-and-tools/essay-writing/" target="_blank">Essay Writing Tips</a>
+    </div>
 </section>
-
-<script>
-function login() {
-    const u = document.getElementById("user").value;
-    const p = document.getElementById("pass").value;
-
-    if (!u || !p) return alert("Enter login info");
-
-    localStorage.setItem("user", u);
-    localStorage.setItem("pass", p);
-
-    document.getElementById("loginScreen").style.display = "none";
-
-    document.getElementById("popup").style.display = "flex";
-}
-
-function closePopup() {
-    document.getElementById("popup").style.display = "none";
-}
-
-// auto login
-window.onload = function() {
-    const u = localStorage.getItem("user");
-    const p = localStorage.getItem("pass");
-
-    if (u && p) {
-        document.getElementById("loginScreen").style.display = "none";
-    }
-};
-</script>
 
 </body>
 </html>
