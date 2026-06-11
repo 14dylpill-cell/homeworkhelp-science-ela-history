@@ -2,20 +2,24 @@
 <html>
 <head>
 <title>Launcher</title>
+<style>
+body {
+    margin: 0;
+    background: black;
+}
+</style>
 </head>
 
-<body style="margin:0;">
+<body>
+
+<iframe id="frame" src="index.html"
+style="width:100vw;height:100vh;border:none;"></iframe>
 
 <script>
 window.onload = () => {
     document.documentElement.requestFullscreen().catch(()=>{});
 };
 </script>
-
-<iframe
-    src="index.html"
-    style="width:100vw;height:100vh;border:none;">
-</iframe>
 
 </body>
 </html>
