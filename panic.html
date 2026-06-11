@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panic Mode</title>
+</head>
 
+<body style="font-family: Arial; text-align: center; padding: 50px; background-color: #111; color: white;">
+
+    <h1>⚠️ Quick Exit</h1>
+
+    <p>Use this to quickly leave the site.</p>
+
+    <button onclick="goClassroom()" 
+    style="background:red; color:white; padding:10px 20px; font-size:18px;">
+        Go to Google Classroom
+    </button>
+
+    <br><br>
+
+    <a href="index.html">
+        <button>Back to Site</button>
+    </a>
+
+    <script>
+        function goClassroom() {
+            window.location.href = "https://classroom.google.com";
+        }
+    </script>
+
+</body>
+</html>
