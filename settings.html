@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Settings</title>
 
 <style>
 body {
-    margin: 0;
+    margin:0;
     font-family: Arial;
-    background: #f4f4f4;
+    background:#f4f4f4;
 }
 
 .container {
-    width: 80%;
-    max-width: 600px;
-    margin: 40px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+    width:80%;
+    max-width:600px;
+    margin:40px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
 }
 
 input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    width:100%;
+    padding:10px;
+    margin:10px 0;
 }
 
 button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    background: #0066cc;
-    color: white;
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#0066cc;
+    color:white;
+    cursor:pointer;
 }
 </style>
 </head>
@@ -41,8 +42,8 @@ button {
 <div class="container">
     <h2>Settings</h2>
 
-    <input id="bgInput" placeholder="Background color (e.g. lightblue)">
-    <input id="titleInput" placeholder="Tab title">
+    <input id="bg" placeholder="Background color (e.g. lightblue)">
+    <input id="title" placeholder="Website tab title">
 
     <button onclick="save()">Apply</button>
     <button onclick="exit()">Exit</button>
@@ -50,13 +51,18 @@ button {
 
 <script>
 function save() {
-    const bg = document.getElementById("bgInput").value;
-    const title = document.getElementById("titleInput").value;
+    const bg = document.getElementById("bg").value;
+    const title = document.getElementById("title").value;
 
-    if (bg) localStorage.setItem("bgColor", bg);
-    if (title) localStorage.setItem("tabTitle", title);
+    if (bg) {
+        localStorage.setItem("bgColor", bg);
+    }
 
-    alert("Saved!");
+    if (title) {
+        localStorage.setItem("tabTitle", title);
+    }
+
+    alert("Settings saved!");
 }
 
 function exit() {
