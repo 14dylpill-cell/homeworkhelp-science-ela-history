@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Games</title>
+<title>Homework Help Hub</title>
+
+<link rel="icon" href="">
 
 <style>
 body {
@@ -20,6 +22,10 @@ header {
     padding: 25px;
 }
 
+header h1 {
+    margin: 0;
+}
+
 /* NAV */
 nav {
     display: flex;
@@ -28,13 +34,17 @@ nav {
     flex-wrap: wrap;
 }
 
-nav a {
+nav a, nav button {
     color: white;
-    text-decoration: none;
     padding: 15px 20px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-nav a:hover {
+nav a:hover, nav button:hover {
     background: #777;
 }
 
@@ -50,21 +60,20 @@ nav a:hover {
 }
 
 /* GAME CARDS */
-.game-grid {
+.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
 }
 
-.game-card {
+.card {
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 15px;
     text-align: center;
-    background: #fff;
 }
 
-.play-btn {
+.play {
     display: inline-block;
     margin-top: 10px;
     padding: 10px 15px;
@@ -74,65 +83,126 @@ nav a:hover {
     border-radius: 6px;
 }
 
-.play-btn:hover {
+.play:hover {
     background: #004f99;
 }
-</style>
 
+/* 🔔 NOTIFICATIONS */
+#notifContainer {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+}
+
+.notif {
+    background: #222;
+    color: white;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    width: 220px;
+    cursor: pointer;
+    font-size: 13px;
+}
+</style>
 </head>
 
 <body>
 
+<!-- 🔔 NOTIFICATIONS -->
+<div id="notifContainer"></div>
+
 <header>
-    <h1>🎮 Games Page</h1>
-    <p>Here you can enjoy games — but remember, learning comes first.</p>
+    <h1>Homework Help Hub</h1>
+    <p>Resources, Games, and Tools</p>
 </header>
 
 <nav>
-    <a href="index.html">Home</a>
     <a href="#featured">Featured Games</a>
-    <a href="#allgames">All Games</a>
+    <a href="#math">Math Help</a>
+    <a href="#ela">ELA Help</a>
+    <a href="games.html">Games</a>
+    <a href="settings.html">Settings</a>
+
+    <button onclick="window.location.href='https://classroom.google.com'" style="background:red;">
+        Panic
+    </button>
 </nav>
 
 <!-- ⭐ FEATURED GAMES -->
 <section class="section" id="featured">
     <h2>⭐ Featured Games</h2>
 
-    <div class="game-grid">
-
-        <div class="game-card">
+    <div class="grid">
+        <div class="card">
             <h3>Game 1</h3>
-            <p>Featured game</p>
-            <a class="play-btn" href="game1.html">Play</a>
+            <a class="play" href="game1.html">Play</a>
         </div>
 
-        <div class="game-card">
+        <div class="card">
             <h3>Game 2</h3>
-            <p>Featured game</p>
-            <a class="play-btn" href="game2.html">Play</a>
+            <a class="play" href="game2.html">Play</a>
         </div>
-
     </div>
 </section>
 
-<!-- 🎮 ALL GAMES -->
-<section class="section" id="allgames">
-    <h2>🎮 All Games</h2>
-
-    <div class="game-grid">
-
-        <div class="game-card">
-            <h3>Game 1</h3>
-            <a class="play-btn" href="game1.html">Play</a>
-        </div>
-
-        <div class="game-card">
-            <h3>Game 2</h3>
-            <a class="play-btn" href="game2.html">Play</a>
-        </div>
-
-    </div>
+<!-- 📚 MATH -->
+<section class="section" id="math">
+    <h2>Math Help</h2>
+    <p>Algebra, Geometry, Calculus resources</p>
 </section>
+
+<!-- ✍️ ELA -->
+<section class="section" id="ela">
+    <h2>ELA Help</h2>
+    <p>Grammar and Writing resources</p>
+</section>
+
+<script>
+const VERSION = "v1.0";
+
+/* 🔔 NOTIFICATIONS */
+function showNotification(title, message) {
+    const container = document.getElementById("notifContainer");
+
+    const notif = document.createElement("div");
+    notif.className = "notif";
+
+    notif.innerHTML = "<b>" + title + "</b><br>" + message;
+
+    notif.onclick = () => notif.remove();
+
+    container.appendChild(notif);
+
+    setTimeout(() => notif.remove(), 6000);
+}
+
+/* 🎨 LOAD SETTINGS */
+window.addEventListener("load", () => {
+
+    const color = localStorage.getItem("bgColor");
+    if (color) document.body.style.background = color;
+
+    const title = localStorage.getItem("siteTitle");
+    if (title) document.title = title;
+
+    const icon = localStorage.getItem("siteIcon");
+    if (icon) {
+        let link = document.querySelector("link[rel='icon']");
+        if (!link) {
+            link = document.createElement("link");
+            link.rel = "icon";
+            document.head.appendChild(link);
+        }
+        link.href = icon;
+    }
+
+    /* Welcome notifications */
+    showNotification("Welcome 👋", "Homework Help Hub loaded");
+    showNotification("Version " + VERSION, "All systems running");
+});
+</script>
 
 </body>
 </html>
