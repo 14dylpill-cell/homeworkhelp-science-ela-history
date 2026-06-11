@@ -2,27 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Games</title>
 
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     background: #f4f4f4;
 }
 
-header {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 25px;
+#login {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.container {
-    width: 85%;
-    max-width: 900px;
-    margin: 30px auto;
+#gameArea {
+    display: none;
+    padding: 30px;
+}
+
+.box {
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -30,39 +32,67 @@ header {
 
 a {
     display: block;
-    padding: 15px;
     margin: 10px 0;
-    background: #0066cc;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    text-align: center;
+    color: blue;
 }
 
-a:hover {
-    background: #004f99;
+.weirdText {
+    color: #444;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Games</h1>
-</header>
-
-<div class="container">
-
-    <a href="https://worlder.worldmicroscope.com" target="_blank">
-        Game 1
-    </a>
-
-    <a href="https://bxappeidj4iav6crormf7atzvi0iwpnq.lambda-url.us-east-2.on.aws" target="_blank">
-        Game 2
-    </a>
-
+<div id="login">
+    <div class="box">
+        <h2>System Access</h2>
+        <p>Enter code to continue</p>
+        <input id="code" placeholder="code">
+        <button onclick="check()">Enter</button>
+    </div>
 </div>
+
+<div id="gameArea">
+    <h2>random system data log // corrupted //</h2>
+
+    <div class="weirdText">
+        system::active.false<br>
+        node::broken_stream_44<br>
+        access_point: hidden<br><br>
+
+        somewhere in this mess... there are games.
+    </div>
+
+    <!-- SECRET BUTTON (NOT OBVIOUS) -->
+    <span onclick="openGames()" style="cursor:pointer; color:#f4f4f4;">
+        ███████████
+    </span>
+
+    <div id="links" style="display:none;">
+        <a href="https://worlder.worldmicroscope.com" target="_blank">Game 1</a>
+        <a href="https://bxappeidj4iav6crormf7atzvi0iwpnq.lambda-url.us-east-2.on.aws" target="_blank">Game 2</a>
+    </div>
+</div>
+
+<script>
+function check() {
+    const code = document.getElementById("code").value;
+
+    if (code === "000") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("gameArea").style.display = "block";
+    } else {
+        alert("wrong code");
+    }
+}
+
+function openGames() {
+    document.getElementById("links").style.display = "block";
+}
+</script>
 
 </body>
 </html>
-
