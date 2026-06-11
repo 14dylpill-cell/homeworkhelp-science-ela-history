@@ -55,12 +55,16 @@
             justify-content: center;
             background-color: #555;
         }
-        nav a {
+        nav a, nav button {
             color: white;
             padding: 1em 2em;
             text-decoration: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
-        nav a:hover {
+        nav a:hover, nav button:hover {
             background-color: #777;
         }
         section {
@@ -102,13 +106,16 @@
         <a href="about.html">About Us</a>
         <a href="settings.html">Settings</a>
         <a href="admin.html">Admin</a>
-        <a href="panic.html">Panic</a>
 
+        <!-- 🚨 PANIC BUTTON FIXED -->
+        <button onclick="window.location.href='https://classroom.google.com'" 
+        style="background:red;">
+            Panic
+        </button>
     </nav>
-
+    
     <section class="help-section" id="math-help">
         <h2>Math Help Resources</h2>
-        <p>Need help with math? Explore these resources!</p>
 
         <div class="help-item">
             <h3>Algebra Basics</h3>
