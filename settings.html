@@ -20,7 +20,7 @@ header {
 }
 
 .container {
-    width: 80%;
+    width: 85%;
     max-width: 600px;
     margin: 30px auto;
     background: white;
@@ -28,24 +28,41 @@ header {
     border-radius: 10px;
 }
 
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
 input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
 button {
     width: 100%;
     padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
     background: #0066cc;
     color: white;
-    border: none;
-    margin-top: 10px;
     cursor: pointer;
 }
 
 button:hover {
     background: #004f99;
+}
+
+.exit {
+    background: #555;
+}
+
+.exit:hover {
+    background: #333;
 }
 </style>
 </head>
@@ -58,11 +75,14 @@ button:hover {
 
 <div class="container">
 
+    <label>Website Title</label>
     <input id="titleInput" placeholder="Enter site title">
-    <input id="colorInput" placeholder="Enter background color (ex: #f4f4f4)">
+
+    <label>Background Color</label>
+    <input id="colorInput" placeholder="Example: #f4f4f4">
 
     <button onclick="saveSettings()">Apply</button>
-    <button onclick="exit()">Exit</button>
+    <button class="exit" onclick="goBack()">Exit</button>
 
 </div>
 
@@ -71,13 +91,18 @@ function saveSettings() {
     const title = document.getElementById("titleInput").value;
     const color = document.getElementById("colorInput").value;
 
-    if (title) localStorage.setItem("siteTitle", title);
-    if (color) localStorage.setItem("bgColor", color);
+    if (title) {
+        localStorage.setItem("siteTitle", title);
+    }
 
-    alert("Saved!");
+    if (color) {
+        localStorage.setItem("bgColor", color);
+    }
+
+    alert("Settings saved!");
 }
 
-function exit() {
+function goBack() {
     window.location.href = "index.html";
 }
 </script>
