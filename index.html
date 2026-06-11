@@ -52,10 +52,19 @@ nav a:hover, nav button:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* LINKS FIX */
-a {
-    position: relative;
-    z-index: 2;
+/* HELP LINKS */
+.link-box {
+    display: block;
+    margin: 10px 0;
+    padding: 12px;
+    background: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.link-box:hover {
+    background: #004f99;
 }
 
 /* NOTIFICATIONS */
@@ -64,6 +73,7 @@ a {
     top: 15px;
     right: 15px;
     z-index: 9999;
+    pointer-events: none;
 }
 
 .notif {
@@ -75,40 +85,64 @@ a {
     width: 220px;
     cursor: pointer;
     font-size: 13px;
+    pointer-events: auto;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NOTIFICATIONS -->
 <div id="notifContainer"></div>
 
 <header>
     <h1>Homework Help Hub</h1>
-    <p>Resources and Tools</p>
+    <p>Resources for School</p>
 </header>
 
 <nav>
-    <a href="https://www.khanacademy.org/math" target="_blank">Math Help</a>
-    <a href="https://www.khanacademy.org/humanities" target="_blank">ELA Help</a>
+    <a href="#math">Math Help</a>
+    <a href="#ela">ELA Help</a>
     <a href="games.html">Games</a>
     <a href="settings.html">Settings</a>
 
     <button onclick="window.location.href='https://classroom.google.com'"
-    style="background:red;">
+        style="background:red;">
         🔴 Panic
     </button>
 </nav>
 
-<section class="section">
+<!-- MATH SECTION -->
+<section class="section" id="math">
     <h2>Math Help</h2>
-    <a href="https://www.khanacademy.org/math" target="_blank">Open Math Resources</a>
+
+    <a class="link-box" href="https://www.khanacademy.org/math" target="_blank">
+        Khan Academy Math
+    </a>
+
+    <a class="link-box" href="https://www.coolmathgames.com/" target="_blank">
+        Cool Math Games
+    </a>
+
+    <a class="link-box" href="https://www.desmos.com/calculator" target="_blank">
+        Desmos Graphing Calculator
+    </a>
 </section>
 
-<section class="section">
+<!-- ELA SECTION -->
+<section class="section" id="ela">
     <h2>ELA Help</h2>
-    <a href="https://www.khanacademy.org/humanities" target="_blank">Open ELA Resources</a>
+
+    <a class="link-box" href="https://www.khanacademy.org/humanities" target="_blank">
+        Khan Academy Humanities
+    </a>
+
+    <a class="link-box" href="https://www.grammarly.com/" target="_blank">
+        Grammarly
+    </a>
+
+    <a class="link-box" href="https://www.noredink.com/" target="_blank">
+        NoRedInk Practice
+    </a>
 </section>
 
 <script>
@@ -117,7 +151,6 @@ function showNotification(title, message) {
 
     const notif = document.createElement("div");
     notif.className = "notif";
-
     notif.innerHTML = "<b>" + title + "</b><br>" + message;
 
     notif.onclick = () => notif.remove();
@@ -129,7 +162,7 @@ function showNotification(title, message) {
 
 window.addEventListener("load", () => {
     showNotification("Welcome 👋", "Homework Help Hub loaded");
-    showNotification("v1.0", "All systems working");
+    showNotification("v1.1", "Multiple resources added");
 });
 </script>
 
