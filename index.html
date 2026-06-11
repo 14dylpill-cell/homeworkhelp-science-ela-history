@@ -72,6 +72,22 @@ nav a:hover, nav button:hover {
     <h2>Welcome</h2>
     <p>Everything is running normally.</p>
 </section>
+<script>
+window.addEventListener("load", () => {
+
+    const title = localStorage.getItem("siteTitle");
+    const color = localStorage.getItem("bgColor");
+
+    if (title) {
+        document.querySelector("header h1").innerText = title;
+    }
+
+    if (color) {
+        document.body.style.background = color;
+    }
+
+});
+</script>
 
 </body>
 </html>
