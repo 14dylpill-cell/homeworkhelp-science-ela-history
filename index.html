@@ -20,7 +20,7 @@ header {
     padding: 25px;
 }
 
-/* NAV BAR */
+/* NAV */
 nav {
     display: flex;
     justify-content: center;
@@ -41,7 +41,7 @@ nav a:hover, nav button:hover {
     background: #777;
 }
 
-/* HELP SECTIONS */
+/* SECTIONS */
 .section {
     width: 85%;
     max-width: 1000px;
@@ -50,6 +50,12 @@ nav a:hover, nav button:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* LINKS FIX */
+a {
+    position: relative;
+    z-index: 2;
 }
 
 /* NOTIFICATIONS */
@@ -80,14 +86,13 @@ nav a:hover, nav button:hover {
 
 <header>
     <h1>Homework Help Hub</h1>
-    <p>Help + Resources for School</p>
+    <p>Resources and Tools</p>
 </header>
 
-<!-- NAVIGATION -->
 <nav>
+    <a href="https://www.khanacademy.org/math" target="_blank">Math Help</a>
+    <a href="https://www.khanacademy.org/humanities" target="_blank">ELA Help</a>
     <a href="games.html">Games</a>
-    <a href="#math">Math Help</a>
-    <a href="#ela">ELA Help</a>
     <a href="settings.html">Settings</a>
 
     <button onclick="window.location.href='https://classroom.google.com'"
@@ -96,18 +101,16 @@ nav a:hover, nav button:hover {
     </button>
 </nav>
 
-<!-- MATH HELP -->
-<section class="section" id="math">
+<section class="section">
     <h2>Math Help</h2>
-    <p>Algebra, Geometry, Calculus resources and practice tools.</p>
+    <a href="https://www.khanacademy.org/math" target="_blank">Open Math Resources</a>
 </section>
 
-<!-- ELA HELP -->
-<section class="section" id="ela">
+<section class="section">
     <h2>ELA Help</h2>
-    <p>Grammar, writing tips, essays, and reading support.</p>
+    <a href="https://www.khanacademy.org/humanities" target="_blank">Open ELA Resources</a>
 </section>
-<!-- NOTIFICATIONS SCRIPT -->
+
 <script>
 function showNotification(title, message) {
     const container = document.getElementById("notifContainer");
@@ -126,7 +129,7 @@ function showNotification(title, message) {
 
 window.addEventListener("load", () => {
     showNotification("Welcome 👋", "Homework Help Hub loaded");
-    showNotification("v1.0", "System running smoothly");
+    showNotification("v1.0", "All systems working");
 });
 </script>
 
