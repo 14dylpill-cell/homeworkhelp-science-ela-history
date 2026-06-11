@@ -15,6 +15,7 @@ body {
     background-color: #f4f4f4;
 }
 
+/* HEADER */
 header {
     background-color: #333;
     color: white;
@@ -22,6 +23,7 @@ header {
     text-align: center;
 }
 
+/* NAV */
 nav {
     display: flex;
     justify-content: center;
@@ -42,6 +44,7 @@ nav a:hover, nav button:hover {
     background-color: #777;
 }
 
+/* SECTIONS */
 section {
     padding: 2em;
     text-align: center;
@@ -53,20 +56,27 @@ section {
     background: white;
     padding: 1.5em;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.help-item {
-    margin-bottom: 2em;
+/* 🔔 NOTIFICATIONS */
+#notifContainer {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
 }
 
-a {
-    color: #0066cc;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
+.notification {
+    background: #333;
+    color: white;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    width: 220px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+    font-size: 14px;
 }
 </style>
 
@@ -74,53 +84,84 @@ a:hover {
 
 <body>
 
+<!-- 🔔 NOTIFICATION AREA -->
+<div id="notifContainer"></div>
+
+<!-- HEADER -->
 <header>
-    <h1>Welcome to the Homework Help Hub</h1>
+    <h1>Homework Help Hub</h1>
 </header>
 
+<!-- NAV -->
 <nav>
     <a href="#math-help">Math Help</a>
-    <a href="about.html">About Us</a>
+    <a href="#ela-help">ELA Help</a>
+    <a href="about.html">About</a>
     <a href="settings.html">Settings</a>
 
-    <!-- 🔴 Panic Button -->
-    <button onclick="window.location.href='https://classroom.google.com'" style="background:red;">
+    <!-- 🔴 PANIC BUTTON -->
+    <button onclick="window.location.href='https://classroom.google.com'"
+    style="background:red;">
         Panic
     </button>
 </nav>
 
+<!-- CONTENT -->
 <section class="help-section" id="math-help">
-    <h2>Math Help Resources</h2>
-
-    <div class="help-item">
-        <h3>Algebra Basics</h3>
-        <a href="https://www.khanacademy.org/math/algebra" target="_blank">Algebra Lessons</a>
-    </div>
-
-    <div class="help-item">
-        <h3>Geometry Fundamentals</h3>
-        <a href="https://www.khanacademy.org/math/geometry" target="_blank">Geometry Lessons</a>
-    </div>
-
-    <div class="help-item">
-        <h3>Calculus Introduction</h3>
-        <a href="https://www.khanacademy.org/math/calculus-1" target="_blank">Calculus Lessons</a>
-    </div>
+    <h2>Math Help</h2>
+    <p>Algebra, Geometry, Calculus resources</p>
 </section>
 
 <section class="help-section" id="ela-help">
-    <h2>ELA Help Resources</h2>
-
-    <div class="help-item">
-        <h3>Grammar Basics</h3>
-        <a href="https://www.khanacademy.org/humanities/grammar" target="_blank">Grammar Lessons</a>
-    </div>
-
-    <div class="help-item">
-        <h3>Essay Writing Tips</h3>
-        <a href="https://writingcenter.unc.edu/tips-and-tools/essay-writing/" target="_blank">Essay Writing Tips</a>
-    </div>
+    <h2>ELA Help</h2>
+    <p>Grammar and Writing resources</p>
 </section>
+
+<!-- SCRIPT -->
+<script>
+
+// 🎨 Load settings
+window.addEventListener("load", function () {
+
+    const color = localStorage.getItem("bgColor");
+    if (color) document.body.style.backgroundColor = color;
+
+    const title = localStorage.getItem("siteTitle");
+    if (title) document.title = title;
+
+    const icon = localStorage.getItem("siteIcon");
+    if (icon) {
+        let link = document.querySelector("link[rel='icon']");
+        if (!link) {
+            link = document.createElement("link");
+            link.rel = "icon";
+            document.head.appendChild(link);
+        }
+        link.href = icon;
+    }
+
+    showNotification("Welcome 👋", "Homework Help Hub loaded successfully!");
+});
+
+// 🔔 Notification system
+function showNotification(title, message) {
+    const container = document.getElementById("notifContainer");
+
+    const notif = document.createElement("div");
+    notif.className = "notification";
+
+    notif.innerHTML = "<b>" + title + "</b><br>" + message;
+
+    notif.onclick = () => notif.remove();
+
+    container.appendChild(notif);
+
+    setTimeout(() => {
+        notif.remove();
+    }, 6000);
+}
+
+</script>
 
 </body>
 </html>
