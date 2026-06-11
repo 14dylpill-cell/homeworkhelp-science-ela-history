@@ -47,18 +47,46 @@ nav a:hover, nav button:hover {
     padding: 20px;
     border-radius: 10px;
 }
+
+.link {
+    display: block;
+    padding: 12px;
+    margin: 10px 0;
+    background: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+/* NOTIFICATIONS */
+#notifContainer {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+}
+
+.notif {
+    background: #222;
+    color: white;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    width: 220px;
+    font-size: 13px;
+}
 </style>
 </head>
 
 <body>
+
+<div id="notifContainer"></div>
 
 <header>
     <h1>Homework Help Hub</h1>
 </header>
 
 <nav>
-    <a href="https://www.khanacademy.org/math" target="_blank">Math Help</a>
-    <a href="https://www.khanacademy.org/humanities" target="_blank">ELA Help</a>
     <a href="games.html">Games</a>
     <a href="launcher.html">Launcher</a>
     <a href="settings.html">Settings</a>
@@ -68,24 +96,40 @@ nav a:hover, nav button:hover {
     </button>
 </nav>
 
+<!-- MATH -->
 <section class="section">
-    <h2>Welcome</h2>
-    <p>Everything is running normally.</p>
+    <h2>Math Help</h2>
+    <a class="link" href="https://www.khanacademy.org/math" target="_blank">Khan Academy Math</a>
+    <a class="link" href="https://www.khanacademy.org/math/algebra" target="_blank">Algebra Help</a>
 </section>
+
+<!-- ELA -->
+<section class="section">
+    <h2>ELA Help</h2>
+    <a class="link" href="https://www.khanacademy.org/humanities" target="_blank">Khan Academy ELA</a>
+    <a class="link" href="https://www.grammarly.com" target="_blank">Grammarly</a>
+</section>
+
 <script>
+function showNotification(title, message) {
+    const container = document.getElementById("notifContainer");
+
+    const notif = document.createElement("div");
+    notif.className = "notif";
+    notif.innerHTML = "<b>" + title + "</b><br>" + message;
+
+    notif.onclick = () => notif.remove();
+
+    container.appendChild(notif);
+
+    setTimeout(() => notif.remove(), 5000);
+}
+
 window.addEventListener("load", () => {
+    showNotification("Welcome 👋", "Homework Help Hub loaded");
 
-    const title = localStorage.getItem("siteTitle");
-    const color = localStorage.getItem("bgColor");
-
-    if (title) {
-        document.querySelector("header h1").innerText = title;
-    }
-
-    if (color) {
-        document.body.style.background = color;
-    }
-
+    const bg = localStorage.getItem("bgColor");
+    if (bg) document.body.style.background = bg;
 });
 </script>
 
