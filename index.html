@@ -165,6 +165,21 @@ window.addEventListener("load", () => {
     showNotification("Welcome 👋", "Homework Help Hub loaded");
     showNotification("v1.1", "Multiple resources added");
 });
+<script>
+window.addEventListener("load", () => {
+
+    const title = localStorage.getItem("siteTitle");
+    if (title) {
+        document.title = title;
+        document.querySelector("header h1").innerText = title;
+    }
+
+    const color = localStorage.getItem("bgColor");
+    if (color) {
+        document.body.style.background = color;
+    }
+
+});
 </script>
 
 </body>
