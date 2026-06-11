@@ -48,39 +48,35 @@ nav a:hover, nav button:hover {
     border-radius: 10px;
 }
 
-.link {
-    display: block;
-    padding: 12px;
-    margin: 10px 0;
-    background: #0066cc;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
-/* NOTIFICATIONS */
-#notifContainer {
+/* ADMIN PANEL */
+#adminPanel {
+    display: none;
     position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
 }
 
-.notif {
-    background: #222;
-    color: white;
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    width: 220px;
-    font-size: 13px;
+.adminBox {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.adminTools {
+    display: none;
+    margin-top: 15px;
 }
 </style>
 </head>
 
 <body>
-
-<div id="notifContainer"></div>
 
 <header>
     <h1>Homework Help Hub</h1>
@@ -91,46 +87,59 @@ nav a:hover, nav button:hover {
     <a href="launcher.html">Launcher</a>
     <a href="settings.html">Settings</a>
 
+    <!-- ADMIN BUTTON (VISIBLE) -->
+    <button onclick="openAdmin()">Admin</button>
+
     <button onclick="window.location.href='https://classroom.google.com'" style="background:red;">
         🔴 Panic
     </button>
 </nav>
 
-<!-- MATH -->
-<section class="section">
-    <h2>Math Help</h2>
-    <a class="link" href="https://www.khanacademy.org/math" target="_blank">Khan Academy Math</a>
-    <a class="link" href="https://www.khanacademy.org/math/algebra" target="_blank">Algebra Help</a>
-</section>
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+    <div class="adminBox">
+        <h2>Admin Access</h2>
 
-<!-- ELA -->
+        <input id="adminCode" placeholder="Enter code">
+
+        <br><br>
+
+        <button onclick="checkAdmin()">Enter</button>
+        <button onclick="closeAdmin()">Close</button>
+
+        <div class="adminTools" id="adminTools">
+            <h3>Admin Tools</h3>
+            <button onclick="alert('Tool 1 activated')">Tool 1</button>
+            <button onclick="alert('Tool 2 activated')">Tool 2</button>
+            <button onclick="alert('System check complete')">System Check</button>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT -->
 <section class="section">
-    <h2>ELA Help</h2>
-    <a class="link" href="https://www.khanacademy.org/humanities" target="_blank">Khan Academy ELA</a>
-    <a class="link" href="https://www.grammarly.com" target="_blank">Grammarly</a>
+    <h2>Welcome</h2>
+    <p>Everything is running normally.</p>
 </section>
 
 <script>
-function showNotification(title, message) {
-    const container = document.getElementById("notifContainer");
-
-    const notif = document.createElement("div");
-    notif.className = "notif";
-    notif.innerHTML = "<b>" + title + "</b><br>" + message;
-
-    notif.onclick = () => notif.remove();
-
-    container.appendChild(notif);
-
-    setTimeout(() => notif.remove(), 5000);
+function openAdmin() {
+    document.getElementById("adminPanel").style.display = "flex";
 }
 
-window.addEventListener("load", () => {
-    showNotification("Welcome 👋", "Homework Help Hub loaded");
+function closeAdmin() {
+    document.getElementById("adminPanel").style.display = "none";
+}
 
-    const bg = localStorage.getItem("bgColor");
-    if (bg) document.body.style.background = bg;
-});
+function checkAdmin() {
+    const code = document.getElementById("adminCode").value;
+
+    if (code === "1234") {
+        document.getElementById("adminTools").style.display = "block";
+    } else {
+        alert("Wrong code");
+    }
+}
 </script>
 
 </body>
