@@ -1,48 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1em;
-            text-align: center;
-        }
-        section {
-            padding: 2em;
-            text-align: center;
-        }
-        a {
-            display: inline-block;
-            margin-top: 1em;
-            padding: 0.7em 1.5em;
-            background-color: #0066cc;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a:hover {
-            background-color: #004080;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+/* HEADER */
+header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: center;
+    background: #555;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+}
+
+nav a:hover {
+    background: #777;
+}
+
+/* SECTIONS */
+.section {
+    width: 85%;
+    max-width: 1000px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* GAME CARDS */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.game-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    background: #fff;
+}
+
+.play-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.play-btn:hover {
+    background: #004f99;
+}
+</style>
+
 </head>
+
 <body>
-    <header>
-        <h1>Welcome to the Games Page</h1>
-    </header>
-    <section>
-        <p>Here you can enjoy fun games, but remember: learning comes first!</p>
-        <a href="https://bit.ly/nexlinkfinder" target="_blank">Play the Game Here</a>
-  <a href="https://worlder.worldmicroscope.com" target="_blank">Click Here for the Second Game</a>
-    </section>
+
+<header>
+    <h1>🎮 Games Page</h1>
+    <p>Here you can enjoy games — but remember, learning comes first.</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="#featured">Featured Games</a>
+    <a href="#allgames">All Games</a>
+</nav>
+
+<!-- ⭐ FEATURED GAMES -->
+<section class="section" id="featured">
+    <h2>⭐ Featured Games</h2>
+
+    <div class="game-grid">
+
+        <div class="game-card">
+            <h3>Game 1</h3>
+            <p>Featured game</p>
+            <a class="play-btn" href="game1.html">Play</a>
+        </div>
+
+        <div class="game-card">
+            <h3>Game 2</h3>
+            <p>Featured game</p>
+            <a class="play-btn" href="game2.html">Play</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🎮 ALL GAMES -->
+<section class="section" id="allgames">
+    <h2>🎮 All Games</h2>
+
+    <div class="game-grid">
+
+        <div class="game-card">
+            <h3>Game 1</h3>
+            <a class="play-btn" href="game1.html">Play</a>
+        </div>
+
+        <div class="game-card">
+            <h3>Game 2</h3>
+            <a class="play-btn" href="game2.html">Play</a>
+        </div>
+
+    </div>
+</section>
+
 </body>
 </html>
