@@ -39,6 +39,31 @@
         function applyTheme() {
             const color = document.getElementById("colorPicker").value;
             document.body.style.backgroundColor = color;
+
+            <script>
+
+function changeTitle() {
+    const name = document.getElementById("titleInput").value;
+    if (!name) return;
+    document.title = name;
+}
+
+function setIcon(url) {
+    if (!url) return;
+
+    let link = document.querySelector("link[rel='icon']");
+
+    if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.head.appendChild(link);
+    }
+
+    link.href = url;
+}
+
+</script>
+
         }
     </script>
 
