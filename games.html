@@ -3,18 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Homework Help Hub</title>
-
-<link rel="icon" href="">
+<title>Games</title>
 
 <style>
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
+    margin: 0;
     background: #f4f4f4;
 }
 
-/* HEADER */
 header {
     background: #333;
     color: white;
@@ -22,36 +19,9 @@ header {
     padding: 25px;
 }
 
-header h1 {
-    margin: 0;
-}
-
-/* NAV */
-nav {
-    display: flex;
-    justify-content: center;
-    background: #555;
-    flex-wrap: wrap;
-}
-
-nav a, nav button {
-    color: white;
-    padding: 15px 20px;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-nav a:hover, nav button:hover {
-    background: #777;
-}
-
-/* SECTIONS */
 .section {
     width: 85%;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 30px auto;
     background: white;
     padding: 20px;
@@ -59,150 +29,37 @@ nav a:hover, nav button:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* GAME CARDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-}
-
-.play {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
+a {
+    display: block;
+    padding: 12px;
+    margin: 10px 0;
     background: #0066cc;
     color: white;
     text-decoration: none;
     border-radius: 6px;
 }
 
-.play:hover {
+a:hover {
     background: #004f99;
 }
-
-/* 🔔 NOTIFICATIONS */
-#notifContainer {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 9999;
-}
-
-.notif {
-    background: #222;
-    color: white;
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    width: 220px;
-    cursor: pointer;
-    font-size: 13px;
-}
 </style>
+
 </head>
 
 <body>
 
-<!-- 🔔 NOTIFICATIONS -->
-<div id="notifContainer"></div>
-
 <header>
-    <h1>Homework Help Hub</h1>
-    <p>Resources, Games, and Tools</p>
+    <h1>🎮 Games Page</h1>
 </header>
 
-<nav>
-    <a href="#featured">Featured Games</a>
-    <a href="#math">Math Help</a>
-    <a href="#ela">ELA Help</a>
-    <a href="games.html">Games</a>
-    <a href="settings.html">Settings</a>
+<section class="section">
+    <h2>Available Games</h2>
 
-    <button onclick="window.location.href='https://classroom.google.com'" style="background:red;">
-        Panic
-    </button>
-</nav>
+    <a href="game1.html">Game 1</a>
+    <a href="game2.html">Game 2</a>
+    <a href="game3.html">Game 3</a>
 
-<!-- ⭐ FEATURED GAMES -->
-<section class="section" id="featured">
-    <h2>⭐ Featured Games</h2>
-
-    <div class="grid">
-        <div class="card">
-            <h3>Game 1</h3>
-            <a class="play" href="game1.html">Play</a>
-        </div>
-
-        <div class="card">
-            <h3>Game 2</h3>
-            <a class="play" href="game2.html">Play</a>
-        </div>
-    </div>
 </section>
-
-<!-- 📚 MATH -->
-<section class="section" id="math">
-    <h2>Math Help</h2>
-    <p>Algebra, Geometry, Calculus resources</p>
-</section>
-
-<!-- ✍️ ELA -->
-<section class="section" id="ela">
-    <h2>ELA Help</h2>
-    <p>Grammar and Writing resources</p>
-</section>
-
-<script>
-const VERSION = "v1.0";
-
-/* 🔔 NOTIFICATIONS */
-function showNotification(title, message) {
-    const container = document.getElementById("notifContainer");
-
-    const notif = document.createElement("div");
-    notif.className = "notif";
-
-    notif.innerHTML = "<b>" + title + "</b><br>" + message;
-
-    notif.onclick = () => notif.remove();
-
-    container.appendChild(notif);
-
-    setTimeout(() => notif.remove(), 6000);
-}
-
-/* 🎨 LOAD SETTINGS */
-window.addEventListener("load", () => {
-
-    const color = localStorage.getItem("bgColor");
-    if (color) document.body.style.background = color;
-
-    const title = localStorage.getItem("siteTitle");
-    if (title) document.title = title;
-
-    const icon = localStorage.getItem("siteIcon");
-    if (icon) {
-        let link = document.querySelector("link[rel='icon']");
-        if (!link) {
-            link = document.createElement("link");
-            link.rel = "icon";
-            document.head.appendChild(link);
-        }
-        link.href = icon;
-    }
-
-    /* Welcome notifications */
-    showNotification("Welcome 👋", "Homework Help Hub loaded");
-    showNotification("Version " + VERSION, "All systems running");
-});
-</script>
 
 </body>
 </html>
