@@ -8,17 +8,11 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
     background: #f4f4f4;
 }
 
-header {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 25px;
-}
-
+/* NAV */
 nav {
     display: flex;
     justify-content: center;
@@ -29,16 +23,17 @@ nav {
 nav a, nav button {
     color: white;
     padding: 15px 20px;
-    text-decoration: none;
     border: none;
     background: none;
     cursor: pointer;
+    text-decoration: none;
 }
 
 nav a:hover, nav button:hover {
     background: #777;
 }
 
+/* SECTIONS */
 .section {
     width: 85%;
     max-width: 900px;
@@ -48,94 +43,95 @@ nav a:hover, nav button:hover {
     border-radius: 10px;
 }
 
-/* ADMIN PANEL */
-#adminPanel {
-    display: none;
+/* NOTIFICATIONS */
+#notifContainer {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
 }
 
-.adminBox {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    width: 300px;
-}
-
-.adminTools {
-    display: none;
-    margin-top: 15px;
+.notif {
+    background: #222;
+    color: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    width: 220px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Homework Help Hub</h1>
-</header>
+<div id="notifContainer"></div>
 
 <nav>
-    <a href="games.html">Games</a>
+    <a href="about.html">About Us</a>
     <a href="launcher.html">Launcher</a>
     <a href="settings.html">Settings</a>
-
-    <!-- ADMIN BUTTON (VISIBLE) -->
     <button onclick="openAdmin()">Admin</button>
-
-    <button onclick="window.location.href='https://classroom.google.com'" style="background:red;">
-        🔴 Panic
-    </button>
+    <button onclick="window.location.href='https://classroom.google.com'" style="background:red;">Panic</button>
 </nav>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel">
-    <div class="adminBox">
-        <h2>Admin Access</h2>
+<!-- MAIN CONTENT -->
+<section class="section">
+    <h2>Math Help</h2>
+    <a href="https://www.khanacademy.org/math" target="_blank">Khan Academy Math</a>
+    <br><br>
+    <a href="https://www.khanacademy.org/math/algebra" target="_blank">Algebra Help</a>
+</section>
 
-        <input id="adminCode" placeholder="Enter code">
+<section class="section">
+    <h2>ELA Help</h2>
+    <a href="https://www.khanacademy.org/humanities" target="_blank">Khan Academy ELA</a>
+    <br><br>
+    <a href="https://www.grammarly.com" target="_blank">Grammarly</a>
+</section>
 
+<!-- ADMIN -->
+<div id="adminPanel" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8);">
+    <div style="background:white; padding:20px; width:300px; margin:100px auto; text-align:center;">
+        <h3>Admin Access</h3>
+        <input id="adminCode" placeholder="Code">
         <br><br>
-
         <button onclick="checkAdmin()">Enter</button>
         <button onclick="closeAdmin()">Close</button>
 
-        <div class="adminTools" id="adminTools">
-            <h3>Admin Tools</h3>
-            <button onclick="alert('Tool 1 activated')">Tool 1</button>
-            <button onclick="alert('Tool 2 activated')">Tool 2</button>
-            <button onclick="alert('System check complete')">System Check</button>
+        <div id="adminTools" style="display:none; margin-top:15px;">
+            <button onclick="showNotification('Test','Admin button works')">Test Alert</button>
+            <button onclick="document.body.style.background='lightblue'">Blue Mode</button>
+            <button onclick="document.body.style.background='#f4f4f4'">Reset</button>
         </div>
     </div>
 </div>
 
-<!-- CONTENT -->
-<section class="section">
-    <h2>Welcome</h2>
-    <p>Everything is running normally.</p>
-</section>
-
 <script>
-function openAdmin() {
-    document.getElementById("adminPanel").style.display = "flex";
+function showNotification(title, message) {
+    const c = document.getElementById("notifContainer");
+    const n = document.createElement("div");
+    n.className = "notif";
+    n.innerHTML = "<b>"+title+"</b><br>"+message;
+    n.onclick = () => n.remove();
+    c.appendChild(n);
+    setTimeout(()=>n.remove(),5000);
 }
 
-function closeAdmin() {
-    document.getElementById("adminPanel").style.display = "none";
+window.onload = () => {
+    showNotification("Welcome 👋","Everything is running normally");
+};
+
+function openAdmin(){
+    document.getElementById("adminPanel").style.display="block";
 }
 
-function checkAdmin() {
-    const code = document.getElementById("adminCode").value;
+function closeAdmin(){
+    document.getElementById("adminPanel").style.display="none";
+}
 
-    if (code === "1234") {
-        document.getElementById("adminTools").style.display = "block";
+function checkAdmin(){
+    if(document.getElementById("adminCode").value==="1234"){
+        document.getElementById("adminTools").style.display="block";
     } else {
         alert("Wrong code");
     }
