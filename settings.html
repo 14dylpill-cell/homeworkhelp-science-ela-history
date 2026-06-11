@@ -4,67 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
+
+    <link rel="icon" href="">
 </head>
+
 <body style="font-family: Arial; text-align: center; padding: 30px;">
 
     <h1>Settings</h1>
 
+    <!--Theme -->
     <p>Choose your theme color:</p>
-
     <input type="color" id="colorPicker">
-
-    <br><br>
-
     <button onclick="applyTheme()">Apply</button>
 
     <br><br>
 
-<p>Change Tab Name:</p>
-<input type="text" id="titleInput" placeholder="New name">
-<button onclick="changeTitle()">Apply Name</button>
-
-<br><br>
-
-<p>Change Tab Icon:</p>
-<input type="text" id="iconInput" placeholder="Image URL">
-<button onclick="changeIcon()">Apply Icon</button>
-
+    <!--Title -->
+    <p>Change Tab Name:</p>
+    <input type="text" id="titleInput" placeholder="New name">
+    <button onclick="changeTitle()">Apply Name</button>
 
     <br><br>
-<a href="index.html">
-    <button>Exit Settings</button>
-</a>
 
+    <!--Icon -->
+    <p>Change Tab Icon:</p>
+    <input type="text" id="iconInput" placeholder="Image URL">
+    <button onclick="changeIcon()">Apply Icon</button>
+
+    <br><br>
+
+    <!--Exit -->
+    <a href="index.html">
+        <button>Exit Settings</button>
+    </a>
+
+    <!--SCRIPT-->
     <script>
+
         function applyTheme() {
             const color = document.getElementById("colorPicker").value;
             document.body.style.backgroundColor = color;
-
-            <script>
-
-function changeTitle() {
-    const name = document.getElementById("titleInput").value;
-    if (!name) return;
-    document.title = name;
-}
-
-function setIcon(url) {
-    if (!url) return;
-
-    let link = document.querySelector("link[rel='icon']");
-
-    if (!link) {
-        link = document.createElement("link");
-        link.rel = "icon";
-        document.head.appendChild(link);
-    }
-
-    link.href = url;
-}
-
-</script>
-
+            localStorage.setItem("bgColor", color);
         }
+
+        function changeTitle() {
+            const name = document.getElementById("titleInput").value;
+            if (!name) return;
+
+            document.title = name;
+            localStorage.setItem("siteTitle", name);
+        }
+
+        function changeIcon() {
+            const url = document.getElementById("iconInput").value;
+            if (!url) return;
+
+            localStorage.setItem("siteIcon", url);
+
+            let link = document.querySelector("link[rel='icon']");
+
+            if (!link) {
+                link = document.createElement("link");
+                link.rel = "icon";
+                document.head.appendChild(link);
+            }
+
+            link.href = url;
+        }
+
+        // Load saved settings when page opens
+        window.onload = function () {
+
+            const color = localStorage.getItem("bgColor");
+            if (color) document.body.style.backgroundColor = color;
+
+            const title = localStorage.getItem("siteTitle");
+            if (title) document.title = title;
+
+            const icon = localStorage.getItem("siteIcon");
+            if (icon) {
+                let link = document.querySelector("link[rel='icon']");
+                if (!link) {
+                    link = document.createElement("link");
+                    link.rel = "icon";
+                    document.head.appendChild(link);
+                }
+                link.href = icon;
+            }
+        };
+
     </script>
 
 </body>
