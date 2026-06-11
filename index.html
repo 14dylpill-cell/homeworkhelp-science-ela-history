@@ -7,76 +7,19 @@
 
 <link rel="icon" href="">
 
-<script>
-const currentVersion = "1.0";
-
-window.addEventListener("load", function () {
-
-    // 🎨 Theme
-    const color = localStorage.getItem("bgColor");
-    if (color) document.body.style.backgroundColor = color;
-
-    // 🏷 Title
-    const title = localStorage.getItem("siteTitle");
-    if (title) document.title = title;
-
-    // 🖼 Icon
-    const icon = localStorage.getItem("siteIcon");
-    if (icon) {
-        let link = document.querySelector("link[rel='icon']");
-        if (!link) {
-            link = document.createElement("link");
-            link.rel = "icon";
-            document.head.appendChild(link);
-        }
-        link.href = icon;
-    }
-
-    // 🔐 LOGIN CHECK
-    const user = localStorage.getItem("user");
-    const pass = localStorage.getItem("pass");
-
-    if (user && pass) {
-        document.getElementById("loginScreen").style.display = "none";
-    }
-
-    // 🚀 POPUP
-    const seen = localStorage.getItem("seenVersion");
-    if (seen !== currentVersion) {
-        document.getElementById("updatePopup").style.display = "flex";
-    }
-
-});
-
-// 🔐 LOGIN
-function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
-
-    if (!user || !pass) {
-        alert("Enter username and password");
-        return;
-    }
-
-    localStorage.setItem("user", user);
-    localStorage.setItem("pass", pass);
-
-    document.getElementById("loginScreen").style.display = "none";
-}
-
-// 🚪 CLOSE POPUP
-function closePopup() {
-    document.getElementById("updatePopup").style.display = "none";
-    localStorage.setItem("seenVersion", currentVersion);
-}
-
-</script>
-
 <style>
 body {
     font-family: Arial;
     margin: 0;
     background: #f4f4f4;
+}
+
+/* HEADER */
+header {
+    background:#333;
+    color:white;
+    padding:15px;
+    text-align:center;
 }
 
 /* NAV */
@@ -85,32 +28,25 @@ nav {
     justify-content:center;
     background:#555;
     align-items:center;
+    flex-wrap:wrap;
 }
+
 nav a, nav button {
     color:white;
     padding:15px;
     background:none;
     border:none;
     cursor:pointer;
+    font-size:16px;
 }
+
 nav a:hover, nav button:hover {
     background:#777;
 }
 
-/* LOGIN SCREEN */
-#loginScreen {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#111;
-    color:white;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    z-index:10000;
+/* SECTIONS */
+section {
+    padding:20px;
 }
 
 /* POPUP */
@@ -130,9 +66,25 @@ nav a:hover, nav button:hover {
 #popupBox {
     background:white;
     padding:20px;
-    width:320px;
     border-radius:10px;
+    width:320px;
     text-align:center;
+}
+
+/* LOGIN SCREEN */
+#loginScreen {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#111;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:10000;
+    color:white;
 }
 
 /* LASER FRAME */
@@ -149,6 +101,65 @@ nav a:hover, nav button:hover {
 }
 </style>
 
+<script>
+const currentVersion = "1.0";
+
+window.addEventListener("load", function () {
+
+    // SETTINGS LOAD
+    const color = localStorage.getItem("bgColor");
+    if (color) document.body.style.backgroundColor = color;
+
+    const title = localStorage.getItem("siteTitle");
+    if (title) document.title = title;
+
+    const icon = localStorage.getItem("siteIcon");
+    if (icon) {
+        let link = document.querySelector("link[rel='icon']");
+        if (!link) {
+            link = document.createElement("link");
+            link.rel = "icon";
+            document.head.appendChild(link);
+        }
+        link.href = icon;
+    }
+
+    // LOGIN CHECK
+    const user = localStorage.getItem("user");
+    const pass = localStorage.getItem("pass");
+
+    if (user && pass) {
+        document.getElementById("loginScreen").style.display = "none";
+    }
+
+    // POPUP
+    const seen = localStorage.getItem("seenVersion");
+    if (seen !== currentVersion) {
+        document.getElementById("updatePopup").style.display = "flex";
+    }
+});
+
+function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+
+    if (!user || !pass) {
+        alert("Enter username and password");
+        return;
+    }
+
+    localStorage.setItem("user", user);
+    localStorage.setItem("pass", pass);
+
+    document.getElementById("loginScreen").style.display = "none";
+}
+
+function closePopup() {
+    document.getElementById("updatePopup").style.display = "none";
+    localStorage.setItem("seenVersion", currentVersion);
+}
+</script>
+
 </head>
 
 <body>
@@ -158,7 +169,7 @@ nav a:hover, nav button:hover {
     <h2>🔐 Login</h2>
     <input id="username" placeholder="Username" style="padding:10px;margin:5px;">
     <input id="password" type="password" placeholder="Password" style="padding:10px;margin:5px;">
-    <button onclick="login()">Enter Site</button>
+    <button onclick="login()" style="padding:10px;">Enter Site</button>
 </div>
 
 <!-- 🚀 POPUP -->
@@ -181,31 +192,32 @@ nav a:hover, nav button:hover {
 
 <!-- HEADER -->
 <header>
-<h1>Homework Help Hub</h1>
+    <h1>Homework Help Hub</h1>
 </header>
 
 <!-- NAV -->
 <nav>
-<a href="#math-help">Math Help</a>
-<a href="about.html">About</a>
-<a href="settings.html">Settings</a>
-<a href="admin.html">Admin</a>
+    <a href="#math-help">Math Help</a>
+    <a href="#ela-help">ELA Help</a>
+    <a href="about.html">About</a>
+    <a href="settings.html">Settings</a>
+    <a href="admin.html">Admin</a>
 
-<button onclick="window.location.href='https://classroom.google.com'"
-style="background:red;">
-Panic
-</button>
+    <button onclick="window.location.href='https://classroom.google.com'"
+    style="background:red;">
+        Panic
+    </button>
 </nav>
 
 <!-- CONTENT -->
-<section id="math-help" style="padding:20px;">
-<h2>Math Help</h2>
-<p>Algebra, Geometry, Calculus resources</p>
+<section id="math-help">
+    <h2>Math Help</h2>
+    <p>Algebra, Geometry, Calculus resources</p>
 </section>
 
-<section id="ela-help" style="padding:20px;">
-<h2>ELA Help</h2>
-<p>Grammar and Writing resources</p>
+<section id="ela-help">
+    <h2>ELA Help</h2>
+    <p>Grammar and Writing resources</p>
 </section>
 
 </body>
