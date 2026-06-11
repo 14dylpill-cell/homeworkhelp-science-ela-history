@@ -4,6 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homework Help Hub</title>
+
+    <link rel="icon" href="">
+
+    <script>
+    window.addEventListener("load", function () {
+
+        // 🎨 Theme color
+        const color = localStorage.getItem("bgColor");
+        if (color) {
+            document.body.style.backgroundColor = color;
+        }
+
+        // 🏷 Title
+        const title = localStorage.getItem("siteTitle");
+        if (title) {
+            document.title = title;
+        }
+
+        // 🖼 Icon
+        const icon = localStorage.getItem("siteIcon");
+        if (icon) {
+            let link = document.querySelector("link[rel='icon']");
+            if (!link) {
+                link = document.createElement("link");
+                link.rel = "icon";
+                document.head.appendChild(link);
+            }
+            link.href = icon;
+        }
+
+    });
+    </script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,46 +90,52 @@
         }
     </style>
 </head>
+
 <body>
+
     <header>
         <h1>Welcome to the Homework Help Hub</h1>
     </header>
+
     <nav>
         <a href="#math-help">Math Help</a>
         <a href="about.html">About Us</a>
         <a href="settings.html">Settings</a>
     </nav>
+
     <section class="help-section" id="math-help">
         <h2>Math Help Resources</h2>
         <p>Need help with math? Explore these resources!</p>
+
         <div class="help-item">
             <h3>Algebra Basics</h3>
-            <p>Learn how to solve equations, understand variables, and work with expressions.</p>
-            <a href="https://www.khanacademy.org/math/algebra" target="_blank">Algebra Lessons on Khan Academy</a>
+            <a href="https://www.khanacademy.org/math/algebra" target="_blank">Algebra Lessons</a>
         </div>
+
         <div class="help-item">
             <h3>Geometry Fundamentals</h3>
-            <p>Understand shapes, angles, and the basics of geometry proofs.</p>
-            <a href="https://www.khanacademy.org/math/geometry" target="_blank">Geometry Lessons on Khan Academy</a>
+            <a href="https://www.khanacademy.org/math/geometry" target="_blank">Geometry Lessons</a>
         </div>
+
         <div class="help-item">
             <h3>Calculus Introduction</h3>
-            <p>Get started with limits, derivatives, and integrals in calculus.</p>
-            <a href="https://www.khanacademy.org/math/calculus-1" target="_blank">Calculus Lessons on Khan Academy</a>
+            <a href="https://www.khanacademy.org/math/calculus-1" target="_blank">Calculus Lessons</a>
         </div>
-        <section class="help-section" id="ela-help">
-    <h2>ELA Help Resources</h2>
-    <p>Improve your English language and writing skills with these resources!</p>
-    <div class="help-item">
-        <h3>Grammar Basics</h3>
-        <p>Understand sentence structure, punctuation, and grammar rules.</p>
-        <a href="https://www.khanacademy.org/humanities/grammar" target="_blank">Grammar Lessons on Khan Academy</a>
-    </div>
-    <div class="help-item">
-        <h3>Essay Writing Tips</h3>
-        <p>Learn how to structure essays, craft arguments, and improve clarity in writing.</p>
-        <a href="https://writingcenter.unc.edu/tips-and-tools/essay-writing/" target="_blank">Essay Writing Tips from UNC</a>
-    </div>
-</section>
+    </section>
+
+    <section class="help-section" id="ela-help">
+        <h2>ELA Help Resources</h2>
+
+        <div class="help-item">
+            <h3>Grammar Basics</h3>
+            <a href="https://www.khanacademy.org/humanities/grammar" target="_blank">Grammar Lessons</a>
+        </div>
+
+        <div class="help-item">
+            <h3>Essay Writing</h3>
+            <a href="https://writingcenter.unc.edu/tips-and-tools/essay-writing/" target="_blank">Writing Tips</a>
+        </div>
+    </section>
+
 </body>
 </html>
