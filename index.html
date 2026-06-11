@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Homework Help Hub</title>
 
-<link rel="icon" href="">
-
 <style>
 body {
     margin: 0;
@@ -22,11 +20,7 @@ header {
     padding: 25px;
 }
 
-header h1 {
-    margin: 0;
-}
-
-/* NAV */
+/* NAV BAR */
 nav {
     display: flex;
     justify-content: center;
@@ -41,14 +35,13 @@ nav a, nav button {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 14px;
 }
 
 nav a:hover, nav button:hover {
     background: #777;
 }
 
-/* SECTIONS */
+/* HELP SECTIONS */
 .section {
     width: 85%;
     max-width: 1000px;
@@ -59,35 +52,7 @@ nav a:hover, nav button:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* GAME CARDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-}
-
-.play {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background: #0066cc;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
-.play:hover {
-    background: #004f99;
-}
-
-/* 🔔 NOTIFICATIONS */
+/* NOTIFICATIONS */
 #notifContainer {
     position: fixed;
     top: 15px;
@@ -110,59 +75,40 @@ nav a:hover, nav button:hover {
 
 <body>
 
-<!-- 🔔 NOTIFICATIONS -->
+<!-- NOTIFICATIONS -->
 <div id="notifContainer"></div>
 
 <header>
     <h1>Homework Help Hub</h1>
-    <p>Resources, Games, and Tools</p>
+    <p>Help + Resources for School</p>
 </header>
 
+<!-- NAVIGATION -->
 <nav>
-    <a href="#featured">Featured Games</a>
+    <a href="games.html">Games</a>
     <a href="#math">Math Help</a>
     <a href="#ela">ELA Help</a>
-    <a href="games.html">Games</a>
     <a href="settings.html">Settings</a>
 
-    <button onclick="window.location.href='https://classroom.google.com'" style="background:red;">
-        Panic
+    <button onclick="window.location.href='https://classroom.google.com'"
+    style="background:red;">
+        🔴 Panic
     </button>
 </nav>
 
-<!-- ⭐ FEATURED GAMES -->
-<section class="section" id="featured">
-    <h2>⭐ Featured Games</h2>
-
-    <div class="grid">
-        <div class="card">
-            <h3>Game 1</h3>
-            <a class="play" href="game1.html">Play</a>
-        </div>
-
-        <div class="card">
-            <h3>Game 2</h3>
-            <a class="play" href="game2.html">Play</a>
-        </div>
-    </div>
-</section>
-
-<!-- 📚 MATH -->
+<!-- MATH HELP -->
 <section class="section" id="math">
     <h2>Math Help</h2>
-    <p>Algebra, Geometry, Calculus resources</p>
+    <p>Algebra, Geometry, Calculus resources and practice tools.</p>
 </section>
 
-<!-- ✍️ ELA -->
+<!-- ELA HELP -->
 <section class="section" id="ela">
     <h2>ELA Help</h2>
-    <p>Grammar and Writing resources</p>
+    <p>Grammar, writing tips, essays, and reading support.</p>
 </section>
-
+<!-- NOTIFICATIONS SCRIPT -->
 <script>
-const VERSION = "v1.0";
-
-/* 🔔 NOTIFICATIONS */
 function showNotification(title, message) {
     const container = document.getElementById("notifContainer");
 
@@ -178,29 +124,9 @@ function showNotification(title, message) {
     setTimeout(() => notif.remove(), 6000);
 }
 
-/* 🎨 LOAD SETTINGS */
 window.addEventListener("load", () => {
-
-    const color = localStorage.getItem("bgColor");
-    if (color) document.body.style.background = color;
-
-    const title = localStorage.getItem("siteTitle");
-    if (title) document.title = title;
-
-    const icon = localStorage.getItem("siteIcon");
-    if (icon) {
-        let link = document.querySelector("link[rel='icon']");
-        if (!link) {
-            link = document.createElement("link");
-            link.rel = "icon";
-            document.head.appendChild(link);
-        }
-        link.href = icon;
-    }
-
-    /* Welcome notifications */
     showNotification("Welcome 👋", "Homework Help Hub loaded");
-    showNotification("Version " + VERSION, "All systems running");
+    showNotification("v1.0", "System running smoothly");
 });
 </script>
 
