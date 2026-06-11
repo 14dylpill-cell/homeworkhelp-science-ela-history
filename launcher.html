@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Launcher</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .box {
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            background: #222;
+            border-radius: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h1>🚀 Homework Help Hub Launcher</h1>
+
+        <p>Open the site in a separate window.</p>
+
+        <button onclick="launchSite()">
+            Launch Site
+        </button>
+
+        <br><br>
+
+        <a href="index.html">
+            <button>
+                Go Directly to Site
+            </button>
+        </a>
+    </div>
+
+    <script>
+        function launchSite() {
+
+            const newWindow = window.open(
+                "index.html",
+                "_blank",
+                "width=1200,height=800"
+            );
+
+            if (!newWindow) {
+                alert("Please allow popups for this website.");
+            }
+        }
+    </script>
+
+</body>
+</html>
