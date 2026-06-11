@@ -1,75 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Launcher</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            text-align: center;
-            padding-top: 100px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
 
-        .box {
-            max-width: 500px;
-            margin: auto;
-            padding: 30px;
-            background: #222;
-            border-radius: 12px;
-        }
+header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
 
-        button {
-            padding: 12px 24px;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
+.container {
+    width: 85%;
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
-        button:hover {
-            opacity: 0.9;
-        }
-    </style>
+.game {
+    display: block;
+    padding: 15px;
+    margin: 10px 0;
+    background: #0066cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.game:hover {
+    background: #004f99;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="box">
-        <h1>🚀 Homework Help Hub Launcher</h1>
+<header>
+    <h1>Games</h1>
+</header>
 
-        <p>Open the site in a separate window.</p>
+<div class="container">
 
-        <button onclick="launchSite()">
-            Launch Site
-        </button>
+    <a class="game"
+       href="https://worlder.worldmicroscope.com"
+       target="_blank">
+       Game 1
+    </a>
 
-        <br><br>
+    <a class="game"
+       href="https://bxappeidj4iav6crormf7atzvi0iwpnq.lambda-url.us-east-2.on.aws"
+       target="_blank">
+       Game 2
+    </a>
 
-        <a href="index.html">
-            <button>
-                Go Directly to Site
-            </button>
-        </a>
-    </div>
-
-    <script>
-        function launchSite() {
-
-            const newWindow = window.open(
-                "index.html",
-                "_blank",
-                "width=1200,height=800"
-            );
-
-            if (!newWindow) {
-                alert("Please allow popups for this website.");
-            }
-        }
-    </script>
+</div>
 
 </body>
 </html>
