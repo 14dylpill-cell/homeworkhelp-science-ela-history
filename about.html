@@ -1,1 +1,64 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        section {
+            padding: 2em;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+        button {
+            margin-top: 1.5em;
+            padding: 0.7em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+    </header>
+    <section>
+        <p>Welcome to our Homework Help Hub! We are dedicated to providing you with top resources to succeed in your studies. Whether it’s math, language arts, or science, we aim to make learning easier and more fun.</p>
+        <p>Our team is passionate about education, and we believe that every student deserves the tools to succeed. Explore our resources, and let us help you grow!</p>
+        <button onclick="showPasscodePrompt()">Games are fun, but learning is better</button>
+    </section>
+    <script>
+        function showPasscodePrompt() {
+            let code = prompt("Enter the passcode to access the games:");
+            if (code === "0000") { // Replace with your desired code
+                window.location.href = 'games.html';
+            } else {
+                alert('Incorrect passcode. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
