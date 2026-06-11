@@ -1,65 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Games</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
 
-/* HEADER */
-header {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 25px;
-}
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
 
-/* GAME LIST */
-.section {
-    width: 85%;
-    max-width: 900px;
-    margin: 30px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+        .games-container {
+            width: 85%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
 
-a {
-    display: block;
-    padding: 12px;
-    margin: 10px 0;
-    background: #0066cc;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
+        .game-button {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            background-color: #0066cc;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: background-color 0.2s;
+        }
 
-a:hover {
-    background: #004f99;
-}
-</style>
+        .game-button:hover {
+            background-color: #004f99;
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-    <h1>🎮 Games</h1>
-</header>
+    <header>
+        <h1>Games</h1>
+    </header>
 
-<section class="section">
+    <div class="games-container">
 
-    <a href="game1.html">Game 1</a>
-    <a href="game2.html">Game 2</a>
-    <a href="game3.html">Game 3</a>
+        <a class="game-button"
+           href="https://worlder.worldmicroscope.com"
+           target="_blank">
+            Game 1
+        </a>
 
-</section>
+        <a class="game-button"
+           href="https://bxappeidj4iav6crormf7atzvi0iwpnq.lambda-url.us-east-2.on.aws"
+           target="_blank">
+            Game 2
+        </a>
+
+    </div>
 
 </body>
 </html>
