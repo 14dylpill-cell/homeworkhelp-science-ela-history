@@ -1,99 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings</title>
 
-    <link rel="icon" href="">
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+.container {
+    width: 85%;
+    max-width: 700px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background: #0066cc;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #004f99;
+}
+
+.exit {
+    background: #555;
+}
+.exit:hover {
+    background: #333;
+}
+</style>
 </head>
 
-<body style="font-family: Arial; text-align: center; padding: 30px;">
+<body>
 
+<header>
     <h1>Settings</h1>
+</header>
 
-    <!-- 🎨 Theme -->
-    <p>Choose your theme color:</p>
-    <input type="color" id="colorPicker">
-    <button onclick="applyTheme()">Apply</button>
+<div class="container">
 
-    <br><br>
+    <label>Website Title</label>
+    <input id="titleInput" placeholder="Enter new title">
 
-    <!-- 🏷 Title -->
-    <p>Change Tab Name:</p>
-    <input type="text" id="titleInput" placeholder="New name">
-    <button onclick="changeTitle()">Apply Name</button>
+    <label>Background Color</label>
+    <input id="colorInput" placeholder="Example: #f4f4f4">
 
-    <br><br>
+    <button onclick="applySettings()">Apply</button>
 
-    <!-- 🖼 Icon -->
-    <p>Change Tab Icon:</p>
-    <input type="text" id="iconInput" placeholder="Image URL">
-    <button onclick="changeIcon()">Apply Icon</button>
+    <button class="exit" onclick="goBack()">Exit</button>
 
-    <br><br>
+</div>
 
-    <!-- 🚪 Exit -->
-    <a href="index.html">
-        <button>Exit Settings</button>
-    </a>
+<script>
+function applySettings() {
+    const title = document.getElementById("titleInput").value;
+    const color = document.getElementById("colorInput").value;
 
-    <!-- ⚙️ SCRIPT (FIXED) -->
-    <script>
+    if (title) {
+        localStorage.setItem("siteTitle", title);
+    }
 
-        function applyTheme() {
-            const color = document.getElementById("colorPicker").value;
-            document.body.style.backgroundColor = color;
-            localStorage.setItem("bgColor", color);
-        }
+    if (color) {
+        localStorage.setItem("bgColor", color);
+    }
 
-        function changeTitle() {
-            const name = document.getElementById("titleInput").value;
-            if (!name) return;
+    alert("Settings saved!");
+}
 
-            document.title = name;
-            localStorage.setItem("siteTitle", name);
-        }
-
-        function changeIcon() {
-            const url = document.getElementById("iconInput").value;
-            if (!url) return;
-
-            localStorage.setItem("siteIcon", url);
-
-            let link = document.querySelector("link[rel='icon']");
-
-            if (!link) {
-                link = document.createElement("link");
-                link.rel = "icon";
-                document.head.appendChild(link);
-            }
-
-            link.href = url;
-        }
-
-        // Load saved settings when page opens
-        window.onload = function () {
-
-            const color = localStorage.getItem("bgColor");
-            if (color) document.body.style.backgroundColor = color;
-
-            const title = localStorage.getItem("siteTitle");
-            if (title) document.title = title;
-
-            const icon = localStorage.getItem("siteIcon");
-            if (icon) {
-                let link = document.querySelector("link[rel='icon']");
-                if (!link) {
-                    link = document.createElement("link");
-                    link.rel = "icon";
-                    document.head.appendChild(link);
-                }
-                link.href = icon;
-            }
-        };
-
-    </script>
+function goBack() {
+    window.location.href = "index.html";
+}
+</script>
 
 </body>
 </html>
