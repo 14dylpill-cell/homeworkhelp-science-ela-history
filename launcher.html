@@ -36,9 +36,8 @@ button:hover{
 
 p{
     color:white;
-    margin-top:15px;
-    font-size:14px;
-    opacity:0.8;
+    margin-top:12px;
+    opacity:0.7;
 }
 </style>
 </head>
@@ -46,20 +45,13 @@ p{
 <body>
 
 <div class="container">
-    <button onclick="openApp()">Open App</button>
-    <p>Launch Homework Hub in a new window</p>
+    <button onclick="launch()">Open App</button>
+    <p>Launch Homework Hub</p>
 </div>
 
 <script>
-function openApp(){
-    // opens index as a separate app-like window
-    const win = window.open("index.html", "_blank", "width=1200,height=800");
-
-    if(win){
-        win.focus();
-    } else {
-        alert("Pop-up blocked. Please allow pop-ups to use launcher.");
-    }
+function launch(){
+    window.location.href = "index.html";
 }
 </script>
 
