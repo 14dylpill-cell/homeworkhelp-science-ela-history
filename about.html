@@ -5,21 +5,16 @@
 
 <style>
 body{
-  font-family:Arial;
-  margin:0;
-  background:#f4f4f4;
+    font-family:Arial;
+    margin:0;
+    background:#f4f4f4;
 }
 
 .box{
-  background:white;
-  margin:20px;
-  padding:20px;
-  border-radius:10px;
-}
-
-.hidden{
-  color:blue;
-  cursor:pointer;
+    background:white;
+    margin:20px;
+    padding:20px;
+    border-radius:10px;
 }
 </style>
 </head>
@@ -27,32 +22,34 @@ body{
 <body>
 
 <div class="box">
-  <h1>About Us</h1>
+    <h1>About Us</h1>
 
-  <p>
-    This is a student help hub with tools and resources.
-  </p>
+    <p>
+        This is a student help hub with tools and resources.
+    </p>
 
-  <p>
-    Click the hidden word:
-    <span class="hidden" onclick="document.getElementById('login').style.display='block'">
-      games
-    </span>
-  </p>
+    <p>
+        Click the hidden word:
+        <span style="color:blue;cursor:pointer;" onclick="showCode()">games</span>
+    </p>
 
-  <div id="login" style="display:none;">
-    <input id="code" placeholder="Enter code">
-    <button onclick="check()">Enter</button>
-  </div>
+    <div id="codeBox" style="display:none;">
+        <input id="code" placeholder="Enter code">
+        <button onclick="check()">Enter</button>
+    </div>
 </div>
 
 <script>
+function showCode(){
+    document.getElementById("codeBox").style.display="block";
+}
+
 function check(){
-  if(document.getElementById("code").value === "0000"){
-    window.location.href = "games.html";
-  } else {
-    alert("Wrong code");
-  }
+    if(document.getElementById("code").value==="000"){
+        window.location.href="games.html";
+    } else {
+        alert("Wrong code");
+    }
 }
 </script>
 
