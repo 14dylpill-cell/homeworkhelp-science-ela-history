@@ -3,14 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <title>Launcher</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#111;
+  font-family:Arial;
+}
+
+button{
+  padding:18px 28px;
+  background:#0066cc;
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+}
+</style>
 </head>
 
-<body style="margin:0;display:flex;justify-content:center;align-items:center;height:100vh;background:#111;">
+<body>
 
-<button onclick="window.location.href='index.html'" 
-style="padding:18px 28px;font-size:16px;background:#0066cc;color:white;border:none;border-radius:10px;">
-Open App
-</button>
+<button onclick="launch()">Open App</button>
+
+<script>
+function launch(){
+
+    const win = window.open(
+        "index.html",
+        "_blank",
+        "width=1200,height=800"
+    );
+
+    if(!win){
+        alert("Pop-ups blocked. Enable pop-ups to use launcher.");
+        return;
+    }
+
+    // inject fullscreen button after load
+    setTimeout(() => {
+        try {
+            win.document.body.insertAdjacentHTML("afterbegin", `
+                <button id="fsBtn"
+                style="
+                    position:fixed;
+                    top:10px;
+                    right:10px;
+                    z-index:9999;
+                    padding:10px;
+                    background:black;
+                    color:white;
+                    border:none;
+                    border-radius:6px;
+                    cursor:pointer;
+                "
+                onclick="
+                    if(document.documentElement.requestFullscreen){
+                        document.documentElement.requestFullscreen();
+                    }
+                ">
+                FULLSCREEN
+                </button>
+            `);
+        } catch(e) {
+            console.log("Popup blocked DOM access");
+        }
+    }, 800);
+
+}
+</script>
 
 </body>
 </html>
