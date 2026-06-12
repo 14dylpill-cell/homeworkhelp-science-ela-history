@@ -1,98 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Games</title>
-
+<title>Launcher</title>
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #f4f4f4;
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
 }
 
-#login {
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#gameArea {
-    display: none;
-    padding: 30px;
-}
-
-.box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-a {
-    display: block;
-    margin: 10px 0;
-    color: blue;
-}
-
-.weirdText {
-    color: #444;
-    font-size: 14px;
-    margin-bottom: 20px;
+button{
+    padding:15px 25px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    border-radius:8px;
 }
 </style>
 </head>
 
 <body>
 
-<div id="login">
-    <div class="box">
-        <h2>System Access</h2>
-        <p>Enter code to continue</p>
-        <input id="code" placeholder="code">
-        <button onclick="check()">Enter</button>
-    </div>
-</div>
-
-<div id="gameArea">
-    <h2>random system data log // corrupted //</h2>
-
-    <div class="weirdText">
-        system::active.false<br>
-        node::broken_stream_44<br>
-        access_point: hidden<br><br>
-
-        somewhere in this mess... there are games.
-    </div>
-
-    <!-- SECRET BUTTON (NOT OBVIOUS) -->
-    <span onclick="openGames()" style="cursor:pointer; color:#f4f4f4;">
-        ███████████
-    </span>
-
-    <div id="links" style="display:none;">
-        <a href="https://worlder.worldmicroscope.com" target="_blank">Game 1</a>
-        <a href="https://bxappeidj4iav6crormf7atzvi0iwpnq.lambda-url.us-east-2.on.aws" target="_blank">Game 2</a>
-    </div>
-</div>
-
-<script>
-function check() {
-    const code = document.getElementById("code").value;
-
-    if (code === "000") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("gameArea").style.display = "block";
-    } else {
-        alert("wrong code");
-    }
-}
-
-function openGames() {
-    document.getElementById("links").style.display = "block";
-}
-</script>
+<button onclick="window.open('index.html','_blank','width=1200,height=800')">
+Open App
+</button>
 
 </body>
 </html>
