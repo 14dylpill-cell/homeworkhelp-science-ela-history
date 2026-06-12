@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>About Us</title>
 
 <style>
 body{
-    font-family:Arial;
-    margin:0;
-    background:#f4f4f4;
+  font-family:Arial;
+  margin:0;
+  background:#f4f4f4;
 }
 
 .box{
-    background:white;
-    margin:20px;
-    padding:20px;
-    border-radius:10px;
+  background:white;
+  margin:20px;
+  padding:20px;
+  border-radius:10px;
+}
+
+/* hidden clickable word should NOT look like a link */
+.secret-word{
+  color:inherit;
+  cursor:pointer;
+  text-decoration:none;
 }
 </style>
 </head>
@@ -22,34 +30,31 @@ body{
 <body>
 
 <div class="box">
-    <h1>About Us</h1>
+  <h1>About Us</h1>
 
-    <p>
-        This is a student help hub with tools and resources.
-    </p>
+  <p>
+    This is a student help hub with tools and resources. You can explore more through
+    <span class="secret-word" onclick="showCode()">games</span>
+    inside this page.
+  </p>
 
-    <p>
-        Click the hidden word:
-        <span style="color:blue;cursor:pointer;" onclick="showCode()">games</span>
-    </p>
-
-    <div id="codeBox" style="display:none;">
-        <input id="code" placeholder="Enter code">
-        <button onclick="check()">Enter</button>
-    </div>
+  <div id="codeBox" style="display:none;">
+    <input id="code" placeholder="Enter code">
+    <button onclick="check()">Enter</button>
+  </div>
 </div>
 
 <script>
 function showCode(){
-    document.getElementById("codeBox").style.display="block";
+  document.getElementById("codeBox").style.display = "block";
 }
 
 function check(){
-    if(document.getElementById("code").value==="000"){
-        window.location.href="games.html";
-    } else {
-        alert("Wrong code");
-    }
+  if(document.getElementById("code").value === "000"){
+    window.location.href = "games.html";
+  } else {
+    alert("Wrong code");
+  }
 }
 </script>
 
