@@ -1,33 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Launcher</title>
 
 <style>
 body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#111;
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+    font-family:Arial;
+}
+
+.container{
+    text-align:center;
 }
 
 button{
-  padding:15px 25px;
-  background:#0066cc;
-  color:white;
-  border:none;
-  border-radius:8px;
+    padding:18px 28px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#004f99;
+}
+
+p{
+    color:white;
+    margin-top:15px;
+    font-size:14px;
+    opacity:0.8;
 }
 </style>
 </head>
 
 <body>
 
-<button onclick="window.location.href='index.html'">
-Open Home Page
-</button>
+<div class="container">
+    <button onclick="openApp()">Open App</button>
+    <p>Launch Homework Hub in a new window</p>
+</div>
+
+<script>
+function openApp(){
+    // opens index as a separate app-like window
+    const win = window.open("index.html", "_blank", "width=1200,height=800");
+
+    if(win){
+        win.focus();
+    } else {
+        alert("Pop-up blocked. Please allow pop-ups to use launcher.");
+    }
+}
+</script>
 
 </body>
 </html>
