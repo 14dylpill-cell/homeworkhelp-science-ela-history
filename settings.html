@@ -1,33 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Launcher</title>
+<title>Settings</title>
 
 <style>
 body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#111;
+    font-family:Arial;
+    margin:0;
+    background:#f4f4f4;
+}
+
+.container{
+    width:80%;
+    max-width:600px;
+    margin:40px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
 }
 
 button{
-  padding:15px 25px;
-  background:#0066cc;
-  color:white;
-  border:none;
-  border-radius:8px;
+    width:100%;
+    padding:12px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<button onclick="window.location.href='index.html'">
-Open Home Page
-</button>
+<div class="container">
+    <h2>Settings</h2>
+
+    <input id="bg" placeholder="Background color">
+    <input id="title" placeholder="Tab title">
+
+    <button onclick="save()">Apply</button>
+    <button onclick="exit()">Exit</button>
+</div>
+
+<script>
+function save(){
+    localStorage.setItem("bg", document.getElementById("bg").value);
+    localStorage.setItem("title", document.getElementById("title").value);
+    alert("Saved!");
+}
+
+function exit(){
+    window.location.href="index.html";
+}
+</script>
 
 </body>
 </html>
