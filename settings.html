@@ -29,9 +29,9 @@ input {
 button {
     width:100%;
     padding:12px;
-    border:none;
     background:#0066cc;
     color:white;
+    border:none;
     cursor:pointer;
 }
 </style>
@@ -42,31 +42,22 @@ button {
 <div class="container">
     <h2>Settings</h2>
 
-    <input id="bg" placeholder="Background color (e.g. lightblue)">
-    <input id="title" placeholder="Website tab title">
+    <input id="bg" placeholder="Background color">
+    <input id="title" placeholder="Tab title">
 
     <button onclick="save()">Apply</button>
     <button onclick="exit()">Exit</button>
 </div>
 
 <script>
-function save() {
-    const bg = document.getElementById("bg").value;
-    const title = document.getElementById("title").value;
-
-    if (bg) {
-        localStorage.setItem("bgColor", bg);
-    }
-
-    if (title) {
-        localStorage.setItem("tabTitle", title);
-    }
-
-    alert("Settings saved!");
+function save(){
+    localStorage.setItem("bgColor", document.getElementById("bg").value);
+    localStorage.setItem("tabTitle", document.getElementById("title").value);
+    alert("Saved");
 }
 
-function exit() {
-    window.location.href = "index.html";
+function exit(){
+    window.location.href="index.html";
 }
 </script>
 
