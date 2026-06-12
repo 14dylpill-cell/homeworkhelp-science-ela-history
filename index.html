@@ -12,23 +12,26 @@ body{
     background:#f4f4f4;
 }
 
+/* TITLE */
 h1{
     text-align:center;
     margin:15px 0;
 }
 
+/* NAV */
 nav{
     background:#555;
-    padding:10px;
-    text-align:center;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
 }
 
 nav a, nav button{
     color:white;
+    padding:12px 15px;
     text-decoration:none;
-    padding:10px 12px;
-    border:none;
     background:none;
+    border:none;
     cursor:pointer;
 }
 
@@ -36,58 +39,93 @@ nav a:hover, nav button:hover{
     background:#777;
 }
 
+/* SECTIONS */
 .section{
+    width:85%;
+    max-width:900px;
+    margin:20px auto;
     background:white;
-    margin:20px;
     padding:15px;
     border-radius:10px;
 }
 
-/* notifications */
-#notif{
+/* NOTIFICATIONS */
+#notifContainer{
     position:fixed;
     top:10px;
     right:10px;
+    z-index:9999;
+}
+
+.notif{
+    background:#222;
+    color:white;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+/* ADMIN POPUP */
+#adminPanel{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+}
+
+.adminBox{
+    background:white;
+    width:300px;
+    margin:120px auto;
+    padding:20px;
+    text-align:center;
+    border-radius:10px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Homework Hub</h1>
+<!-- NOTIFICATIONS -->
+<div id="notifContainer"></div>
 
-<div id="notif"></div>
+<h1>Homework Hub</h1>
 
 <nav>
     <a href="about.html">About Us</a>
     <a href="settings.html">Settings</a>
     <a href="launcher.html">Launcher</a>
 
-    <button onclick="window.location.href='https://classroom.google.com'">Panic</button>
-
     <button onclick="openAdmin()">Admin</button>
+    <button onclick="window.location.href='https://classroom.google.com'">Panic</button>
 </nav>
 
+<!-- KHAN ACADEMY -->
 <div class="section">
     <h2>Khan Academy Help</h2>
-    <a href="https://www.khanacademy.org/math" target="_blank">Khan Academy Help</a>
+    <a href="https://www.khanacademy.org/math" target="_blank">Open Math Help</a>
 </div>
 
 <div class="section">
-    <h2>Khan Academy ELA</h2>
-    <a href="https://www.khanacademy.org/humanities" target="_blank">Khan Academy ELA</a>
+    <h2>Khan Academy ELA Help</h2>
+    <a href="https://www.khanacademy.org/humanities" target="_blank">Open ELA Help</a>
 </div>
 
-<!-- ADMIN -->
-<div id="admin" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);">
-    <div style="background:white;width:300px;margin:100px auto;padding:20px;text-align:center;">
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+    <div class="adminBox">
         <h3>Admin</h3>
-        <input id="code" placeholder="Code">
+        <input id="adminCode" placeholder="Enter code">
         <br><br>
         <button onclick="checkAdmin()">Enter</button>
         <button onclick="closeAdmin()">Close</button>
 
-        <div id="tools" style="display:none;margin-top:10px;">
+        <div id="adminTools" style="display:none;margin-top:10px;">
             <button onclick="document.body.style.background='lightblue'">Blue Mode</button>
             <button onclick="document.body.style.background='#f4f4f4'">Reset</button>
             <button onclick="alert('System OK')">System Check</button>
@@ -96,24 +134,27 @@ nav a:hover, nav button:hover{
 </div>
 
 <script>
-function openAdmin(){
-    document.getElementById("admin").style.display="block";
+
+/* NOTIFICATIONS */
+function showNotification(title, message){
+    const container = document.getElementById("notifContainer");
+
+    const notif = document.createElement("div");
+    notif.className = "notif";
+    notif.innerHTML = "<b>" + title + "</b><br>" + message;
+
+    notif.onclick = () => notif.remove();
+    container.appendChild(notif);
+
+    setTimeout(() => notif.remove(), 5000);
 }
 
-function closeAdmin(){
-    document.getElementById("admin").style.display="none";
-}
-
-function checkAdmin(){
-    if(document.getElementById("code").value==="1234"){
-        document.getElementById("tools").style.display="block";
-    } else {
-        alert("Wrong code");
-    }
-}
-
-/* APPLY SETTINGS */
 window.onload = () => {
+
+    /* notifications */
+    showNotification("Welcome", "Homework Hub loaded");
+
+    /* settings apply */
     const bg = localStorage.getItem("bg");
     const title = localStorage.getItem("title");
 
@@ -125,6 +166,23 @@ window.onload = () => {
         document.title = title;
     }
 };
+
+/* ADMIN */
+function openAdmin(){
+    document.getElementById("adminPanel").style.display="block";
+}
+
+function closeAdmin(){
+    document.getElementById("adminPanel").style.display="none";
+}
+
+function checkAdmin(){
+    if(document.getElementById("adminCode").value === "1234"){
+        document.getElementById("adminTools").style.display="block";
+    } else {
+        alert("Wrong code");
+    }
+}
 </script>
 
 </body>
