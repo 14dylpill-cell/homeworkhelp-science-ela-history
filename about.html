@@ -5,31 +5,56 @@
 
 <style>
 body{
-    font-family: Arial;
-    margin:0;
-    background:#f4f4f4;
+  font-family:Arial;
+  margin:0;
+  background:#f4f4f4;
 }
 
-.container{
-    width:80%;
-    margin:40px auto;
-    background:white;
-    padding:20px;
-    border-radius:10px;
+.box{
+  background:white;
+  margin:20px;
+  padding:20px;
+  border-radius:10px;
+}
+
+.hidden{
+  color:blue;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-<h1>About Us</h1>
+<div class="box">
+  <h1>About Us</h1>
 
-<p>This is a student help hub with tools, games, and resources.</p>
+  <p>
+    This is a student help hub with tools and resources.
+  </p>
 
-<p>Everything is running normally.</p>
+  <p>
+    Click the hidden word:
+    <span class="hidden" onclick="document.getElementById('login').style.display='block'">
+      games
+    </span>
+  </p>
 
+  <div id="login" style="display:none;">
+    <input id="code" placeholder="Enter code">
+    <button onclick="check()">Enter</button>
+  </div>
 </div>
+
+<script>
+function check(){
+  if(document.getElementById("code").value === "0000"){
+    window.location.href = "games.html";
+  } else {
+    alert("Wrong code");
+  }
+}
+</script>
 
 </body>
 </html>
