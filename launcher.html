@@ -3,50 +3,30 @@
 <head>
 <title>Launcher</title>
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #111;
-    color: white;
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
 }
 
-button {
-    padding: 15px 25px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    background: #0066cc;
-    color: white;
-    border-radius: 8px;
-}
-
-button:hover {
-    background: #004f99;
+button{
+    padding:15px 25px;
+    background:#0066cc;
+    color:white;
+    border:none;
+    border-radius:8px;
 }
 </style>
 </head>
 
 <body>
 
-<button onclick="openApp()">Open Launcher</button>
-
-<script>
-function openApp() {
-    const win = window.open(
-        "index.html",
-        "_blank",
-        "width=1200,height=800"
-    );
-
-    if (!win) {
-        alert("Popup blocked — allow popups for this site.");
-    }
-}
-</script>
+<button onclick="window.open('index.html','_blank','width=1200,height=800')">
+Open App
+</button>
 
 </body>
 </html>
