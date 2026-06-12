@@ -36,8 +36,8 @@ button:hover{
 
 p{
     color:white;
-    margin-top:12px;
     opacity:0.7;
+    margin-top:10px;
 }
 </style>
 </head>
@@ -45,12 +45,13 @@ p{
 <body>
 
 <div class="container">
-    <button onclick="launch()">Open App</button>
+    <button onclick="launchApp()">Open App</button>
     <p>Launch Homework Hub</p>
 </div>
 
 <script>
-function launch(){
+function launchApp(){
+    // THIS is the stable version (no popup issues)
     window.location.href = "index.html";
 }
 </script>
