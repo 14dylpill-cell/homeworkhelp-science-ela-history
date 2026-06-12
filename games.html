@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Launcher</title>
+<title>Games</title>
+
 <style>
 body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#111;
+  font-family:Arial;
+  margin:0;
+  background:#f4f4f4;
 }
 
-button{
-    padding:15px 25px;
-    background:#0066cc;
-    color:white;
-    border:none;
-    border-radius:8px;
+.box{
+  background:white;
+  margin:20px;
+  padding:20px;
+  border-radius:10px;
+}
+
+a{
+  display:block;
+  margin:10px 0;
+  padding:10px;
+  background:#0066cc;
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
 }
 </style>
 </head>
 
 <body>
 
-<button onclick="window.open('index.html','_blank','width=1200,height=800')">
-Open App
-</button>
+<div class="box">
+  <h2>Games</h2>
+
+  <a href="https://worlder.worldmicroscope.com" target="_blank">Game 1</a>
+  <a href="https://bxappeidj4iav6crormf7atzvi0iwpnq.lambda-url.us-east-2.on.aws" target="_blank">Game 2</a>
+
+</div>
 
 </body>
 </html>
